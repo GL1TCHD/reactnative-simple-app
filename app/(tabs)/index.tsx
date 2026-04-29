@@ -5,6 +5,14 @@ import {  SafeAreaView as RNSafeAreaView } from "react-native-safe-area-context"
  import {styled} from 'nativewind'
 const SafeAreaView = styled(RNSafeAreaView);
 
+/**
+ * Root app component that renders the home screen with a greeting and primary navigation links.
+ *
+ * Renders a safe-area container that displays a localized greeting and links to onboarding, sign-in,
+ * sign-up, a Spotify subscription page, and a dynamic subscription route.
+ *
+ * @returns The root React element for the app's home screen.
+ */
 export default function App() {
   return (
     <SafeAreaView className="flex-1 bg-background p-5 ">
