@@ -22,19 +22,13 @@ export default function App() {
       <Link href="/onboarding" className="text-lg mt-4 bg-primary rounded-2xl text-background px-4 py-2">
         ابدأ الان
       </Link>
-      <Link href="/(auth)/sign_in" className="text-lg mt-4 bg-success rounded-2xl text-background px-4 py-2">
+      <Link href="/(auth)/sign_in" className="text-lg mt-4 bg-primary rounded-2xl text-background px-4 py-2">
         تسجيل الدخول
       </Link>
-      <Link href="/(auth)/sign_up" className="text-lg mt-4 bg-subscription rounded-2xl text-background px-4 py-2">
+      <Link href="/(auth)/sign_up" className="text-lg mt-4 bg-primary rounded-2xl text-background px-4 py-2">
         التسجيل لاول مرة
       </Link>
-      <Link href="/subscreptions/spotify" className="text-lg mt-4 bg-subscription rounded-2xl text-background px-4 py-2">
-        spotify
-      </Link>
-
-      <Link href={{ pathname: "/subscreptions/[id]" , params: { id: "chat GBT" } }} className="text-lg mt-4 bg-secondary rounded-2xl text-primary bg-subscription px-4 py-2">
-       chat GBT
-      </Link>
+     
      
     </SafeAreaView>
   );
