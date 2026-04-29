@@ -15,8 +15,8 @@ const SafeAreaView = styled(RNSafeAreaView);
  */
 export default function App() {
   return (
-    <SafeAreaView className="flex-1 items-center bg-background justify-center ">
-      <Text className="text-xl font-bold text-success">
+    <SafeAreaView className="flex-1 bg-background p-4 ">
+      <Text className="text-7xl font-bold text-primary">
         اهلا مرتجى
       </Text>
       <Link href="/onboarding" className="text-lg mt-4 bg-primary rounded-2xl text-background px-4 py-2">
