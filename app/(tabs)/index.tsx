@@ -12,6 +12,7 @@ import dayjs from "dayjs";
 import ListHeading from "@/components/ListHeading";
 import UpComingSubscriptions from "@/components/UpComingSubscriptions";
 import SubscriptionCard from "@/components/SubscriptionCard";
+import { useState } from "react";
 
 /**
  * Root app component that renders the home screen with a greeting and primary navigation links.
@@ -22,9 +23,13 @@ import SubscriptionCard from "@/components/SubscriptionCard";
  * @returns The root React element for the app's home screen.
  */
 export default function App() {
+  const [expandedSubscriptionId, setExpandedSubscriptionId] = useState<string | null>(null);
   return (
-    <SafeAreaView className="flex-1 bg-background p-4 ">
-      <View className="home-header">
+    <SafeAreaView className="flex-1 bg-background p-4 ">   
+        <FlatList
+        ListHeaderComponent={()=>(
+          <>
+        <View className="home-header">
         <View className="home-user">
          <Image source={images.avatar} className="home-avatar" />
          <Text className="home-user-name">{HOME_USER.name}</Text>
@@ -44,7 +49,7 @@ export default function App() {
         </View>
       </View>
 
-      <View>
+      <View className="mb-5">
         <ListHeading title="القادم" />
         <FlatList 
         data={UPCOMING_SUBSCRIPTIONS} 
@@ -55,10 +60,25 @@ export default function App() {
         ListEmptyComponent={<Text className="home-empty-state">لايوجد إشتراكات لحد اللحظة</Text>}
          />
       </View>
-      <View>
-        <ListHeading title="كل الاشتراكات" />
-        <SubscriptionCard {...HOME_SUBSCRIPTIONS[0]} />
-      </View>
+      <ListHeading title="كل الاشتراكات" />
+
+          </>
+        )} 
+        data={HOME_SUBSCRIPTIONS}
+        keyExtractor={(item) =>item.id}
+        renderItem={({ item }) => (
+          <SubscriptionCard {...item} 
+            expanded={expandedSubscriptionId === item.id}
+            onPress={() => setExpandedSubscriptionId((currentId) => currentId === item.id ? null : item.id)}
+          />
+         )} 
+        extraData={expandedSubscriptionId}
+        ItemSeparatorComponent={() => <View className="h-4" />}
+        showsVerticalScrollIndicator={false}
+        ListEmptyComponent={<Text className="home-empty-state">لايوجد إشتراكات لحد اللحظة</Text>}
+        contentContainerClassName="pb-30"
+         />
+      
     </SafeAreaView>
   );
 }
